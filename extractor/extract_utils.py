@@ -22,7 +22,7 @@ def load_jsonl(filename):
 
 def extract(model, opt):
     dataset = VideoLoader(
-        opt.data_path,
+        opt.video_path,
         framerate=1/opt.clip_len,
         size=224 if opt.model_version == "ViT-B/32" else 288,
         centercrop=True,

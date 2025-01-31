@@ -69,7 +69,7 @@ class DatasetMR(Dataset):
         self.framerate = 1/opt.clip_len
         self.overwrite = overwrite
         self.model_version = model_version
-        self.data_path = opt.data_path
+        self.data_path = opt.video_path
         self.cache_path = opt.cache_path
         self.data_split = data_split
         self.max_len = opt.max_len
@@ -218,7 +218,6 @@ class DatasetMR(Dataset):
                     video = video.permute(0, 3, 1, 2)
                 else:
                     video = th.zeros(1)
-
                 cl_anchor = video[int(start_anchor*self.framerate):int(end_anchor*self.framerate)]
                 cl_neg = video[int(start_neg*self.framerate):int(end_neg*self.framerate)]
 
@@ -240,4 +239,5 @@ class DatasetMR(Dataset):
         if len(sl_neg) == 0:
             sl_neg = sl_anchor
             cl_neg = cl_anchor
+
         return sl_anchor, sl_neg, cl_anchor, cl_neg, txt
