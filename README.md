@@ -82,6 +82,19 @@ bash ./models/qd_detr/scripts/inference.sh
 
 When conducting experiments on QVHighlights, you can find `hl_val_submission.jsonl` and `hl_test_submission.jsonl` in the `$result` directory. You should zip them and submit them on the official platform.
 
+## Citation
+
+If you use our work, please consider citing:
+
+```bibtex
+@article{wang2024actprompt,
+  title={Actprompt: In-domain feature adaptation via action cues for video temporal grounding},
+  author={Wang, Yubin and Jiang, Xinyang and Cheng, De and Li, Dongsheng and Zhao, Cairong},
+  journal={arXiv preprint arXiv:2408.06622},
+  year={2024}
+}
+```
+
 ## Acknowledgments
 
 Our code is based on [HERO_Video_Feature_Extractor](https://github.com/linjieli222/HERO_Video_Feature_Extractor) repository. We thank the authors for releasing their code. If you use our model and code, please consider citing these works as well.
