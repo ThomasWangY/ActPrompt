@@ -1,4 +1,4 @@
-## Actprompt: In-domain feature adaptation via action cues for video temporal grounding
+# Actprompt: In-domain feature adaptation via action cues for video temporal grounding
 
 [Yubin Wang](https://scholar.google.com/citations?user=mLeYNLoAAAAJ), [Xinyang Jiang](https://scholar.google.com/citations?user=JiTfWVMAAAAJ), [De Cheng](https://scholar.google.com/citations?user=180lASkAAAAJ),  [Dongsheng Li](https://scholar.google.com/citations?user=VNg5rA8AAAAJ), [Cairong Zhao](https://scholar.google.com/citations?user=z-XzWZcAAAAJ)
 
@@ -11,7 +11,7 @@
 
 ## Data Preparation
 
-Here we show the tree structure in the `data` folder under the project (root) path `$root`.
+Here we show the tree structure in the data folder under the project (root) path `$root`. You need to create a new folder named `data` and store the video and feature files according to the following structure.
 
 ```bash
 ├──data
@@ -60,11 +60,15 @@ bash ./script/run_tacos.sh # for TACoS
 bash ./script/run_qv.sh # for QVHighlights
 ```
 
-Notably, when you run the above scripts for the first time, it will take a bit longer (fewer than 10 hours) to segment raw videos and extract `.npy` cache files in `$root/data/$dataset_name/cache` folder for all videos in a specific dataset according to each moment-query pair's video interval automatically. Next, the ``$root/data/$dataset_name/vid_clip` folder will be updated with our ActPrompt for better feature representation, with other feature folders unchanged. To accelerate further computation, we convert all feature files within the one feature folder into an HDF5 file, which is stored under `$root/data/$dataset_name/h5py` folder. Therefore, we have three HDF5 files for each dataset: `txt_clip.hdf5`, `vid_clip.hdf5` and `vid_slowfast.hdf5`, which are used for the following training procedure.
+Notably, when you run the above scripts for the first time, it will take a bit longer (fewer than 10 hours) to segment raw videos and extract `.npy` cache files in `$root/data/$dataset_name/cache` folder for all videos in a specific dataset according to each moment-query pair's video interval automatically. Please ensure you have sufficient space. 
+
+Next, features under `$root/data/$dataset_name/vid_clip` folder will be updated with our ActPrompt for better feature representation, with other feature folders unchanged. 
+
+To accelerate further computation, we convert all feature files within the one feature folder into an HDF5 file, which is stored under `$root/data/$dataset_name/h5py` folder. Therefore, we have three HDF5 files for each dataset: `txt_clip.hdf5`, `vid_clip.hdf5` and `vid_slowfast.hdf5`, which are used for the following training procedure.
 
 ## Training and Evaluation
 
-Training a domain-adaptive model will take 1-2 hours every time. As a plug-and-play approach, we have made slight modifications to the code of existing temporal video grounding methods including [Moment-DETR](https://github.com/jayleicn/moment_detr), [QD-DETR](https://github.com/wjun0830/QD-DETR), [UniVTG](https://github.com/showlab/UniVTG), [TR-DETR](https://github.com/mingyao1120/TR-DETR), enabling them to learn using our features.
+Training a domain-adaptive model will take 1-2 hours every time. As a plug-and-play approach, we have made slight modifications to the code of existing temporal video grounding methods including [Moment-DETR](https://github.com/jayleicn/moment_detr), [QD-DETR](https://github.com/wjun0830/QD-DETR), [UniVTG](https://github.com/showlab/UniVTG), [TR-DETR](https://github.com/mingyao1120/TR-DETR) under `models` folder, enabling them to use our features for training.
 
 - Train and evaluate the model using ActPrompt's features on downstream datasets (you should first change `$root` path in these scripts)
 
