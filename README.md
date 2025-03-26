@@ -16,7 +16,7 @@ Here we show the tree structure in the data folder under the project (root) path
 ```bash
 ├──data
 │   ├── videos
-│   │   ├── TaCoS
+│   │   ├── TACoS
 │   │   ├── QVHighlights
 │   │   ├── Charades
 │   ├── tacos
@@ -81,6 +81,12 @@ bash ./models/qd_detr/scripts/inference.sh
 ```
 
 When conducting experiments on QVHighlights, you can find `hl_val_submission.jsonl` and `hl_test_submission.jsonl` in the `$result` directory. You should zip them and submit them on the official platform.
+
+## Feature Files
+
+We provide feature files tuned with our ActPrompt for downstream datasets. You should put them under `data/$dataset_name` (charades/qvhighlights/tacos) and rename the directory to `h5py`.
+
+Charades: [Link](https://pan.baidu.com/s/1AInV3YG8bWfzH6rSybSrAQ?pwd=6cd1)    QVhighlights: [Link](https://pan.baidu.com/s/1ZgZfknxEUsdDEXisov95oA?pwd=sp34)    TACoS: [Link](https://pan.baidu.com/s/1CG9AgmLoPFaXG-FWdUwGmw?pwd=shc2)
 
 ## Citation
 
